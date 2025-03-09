@@ -1,10 +1,10 @@
-# Calculate Colored Area
+# Skin Detection
 
 ## Description
-This project calculates the total area of different colored shapes in an image. Rectangles have their area multiplied by 3, while squares remain unchanged.
+Detects skin areas in an image and converts them to white, while non-skin areas (hair, eyes, lips, etc.) are turned black.
 
 ## File Structure
-- `calculate_area.py`: Contains the `calculate_area` function.
+- `skin.py`: Contains the `detect_skin` function.
 
 ## Dependencies
 - OpenCV (`cv2`)
@@ -12,8 +12,8 @@ This project calculates the total area of different colored shapes in an image. 
 
 ## Usage
 ```python
-from calculate_area import calculate_area
-result = calculate_area("path/to/image.jpg")
-print(result)
+from skin import detect_skin
+skin_image = detect_skin("path/to/image.jpg")
+cv2.imwrite("output.jpg", skin_image)
 ```
 
