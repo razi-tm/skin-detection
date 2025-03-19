@@ -10,16 +10,16 @@ def detect_skin(image_path):
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     
     # Define skin color range in HSV
-    lower_skin = np.array([0, 20, 70], dtype=np.uint8)
+    lower_skin = np.array([0, 20, 120], dtype=np.uint8)
     upper_skin = np.array([20, 255, 255], dtype=np.uint8)
     
     # Threshold the image to get skin areas
     skin_mask = cv2.inRange(hsv, lower_skin, upper_skin)
     
-    # Apply morphological operations to remove noise
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-    skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_OPEN, kernel)
-    skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_CLOSE, kernel)
+    # # Apply morphological operations to remove noise
+    # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+    # skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_OPEN, kernel)
+    # skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_CLOSE, kernel)
     
     # Convert mask to binary image (skin areas are white, others are black)
     skin_image = cv2.bitwise_and(image, image, mask=skin_mask)
